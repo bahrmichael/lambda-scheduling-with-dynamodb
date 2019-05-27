@@ -14,7 +14,7 @@ This approach is not a good fit if you want to hit a certain minute or second (o
 
 I ran a test by creating 1000 entries with a ttl of 10 to 300 seconds into the future. Below you can find the delay *after* the specified ttl.
 
-| Group  | Time in ms |
+| Group  | Time in seconds |
 | ------------- | ------------- |
 | Maximum  | 791  |
 | Minimum  | 485  |
