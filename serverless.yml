@@ -1,0 +1,20 @@
+service: lambda-scheduler
+
+provider:
+  name: aws
+  runtime: python3.7
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      # Limit this to your lambda-scheduling table
+      Resource: "arn:aws:dynamodb:us-east-1:*:*"
+
+functions:
+  schedule:
+    handler: scheduler.handle
+  execute:
+    handler: executor.handle
+    events:
+      # Use your lambda-scheduling stream
+      - stream: arn:aws:dynamodb:us-east-1:256608350746:table/lambda-scheduling/stream/2019-05-27T15:48:18.587
